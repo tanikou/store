@@ -11,7 +11,7 @@
 	};
 
 	Store.prototype.set = function( key, value ){
-		if ( 'object' !== typeof(value) || Array.isArray(value) ) { value = JSON.stringify( value ); };
+		if ( 'object' === typeof(value) || Array.isArray(value) ) { value = JSON.stringify( value ); };
 		return this._set( key, value );
 	}
 	Store.prototype.get = function( key ){
