@@ -9,6 +9,12 @@
 	var Store = function () {
 		constructor : Store
 	};
+	if (!Array.isArray) {
+		// FIX 4 IE8
+		Array.isArray = function(arg) {
+			return Object.prototype.toString.call(arg) === '[object Array]';
+		};
+	}
 
 	Store.prototype.set = function( key, value ){
 		if ( 'object' === typeof(value) || Array.isArray(value) ) { value = JSON.stringify( value ); };
