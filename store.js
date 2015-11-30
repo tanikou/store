@@ -15,7 +15,9 @@
 		return this._set( key, value );
 	}
 	Store.prototype.get = function( key ){
-		return JSON.parse( this._get( key ) || '{}' );
+		var o = this._get( key );
+		try { o = JSON.parse( o || '{}' ); } catch (err) {}
+		return o;
 	}
 	/************************这应该写成内部方法 开始**************************/
 	Store.prototype._set = function( key, value ){
